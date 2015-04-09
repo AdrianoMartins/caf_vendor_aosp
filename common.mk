@@ -10,32 +10,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dateformat=MM-dd-yyyy \
     ro.com.android.dataroaming=false
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.selinux=1
-
 # Thank you, please drive thru!
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.dun.override=0
-
-# Backup Tool
-PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/aosp/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/aosp/prebuilt/common/bin/50-base.sh:system/addon.d/50-base.sh \
-    vendor/aosp/prebuilt/common/bin/blacklist:system/addon.d/blacklist
-
-# Bootanimation
-PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/media/bootanimation.zip:system/media/bootanimation.zip
 
 # init.d support
 PRODUCT_COPY_FILES += \
     vendor/aosp/prebuilt/common/bin/sysinit:system/bin/sysinit \
     vendor/aosp/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
     vendor/aosp/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
-
-# Init file
-PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/etc/init.local.rc:root/init.cm.rc
 
 # Bring in camera effects
 PRODUCT_COPY_FILES +=  \
@@ -55,30 +37,8 @@ PRODUCT_PACKAGES += \
     BluetoothExt \
     LatinIME \
     Launcher3 \
-    libemoji \
-    Terminal
-
-# Stagefright FFMPEG plugin
-PRODUCT_PACKAGES += \
-    libstagefright_soft_ffmpegadec \
-    libstagefright_soft_ffmpegvdec \
-    libFFmpegExtractor \
-    libnamparser
-
-# Live Wallpapers and more Daydream packages
-PRODUCT_PACKAGES += \
-    Galaxy4 \
-    HoloSpiralWallpaper \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    MagicSmokeWallpapers \
-    NoiseField \
-    PhaseBeam \
-    VisualizationWallpapers \
-    PhotoTable \
-    SoundRecorder \
-    PhotoPhase
-
+    libemoji 
+    
 # Telephony packages
 PRODUCT_PACKAGES += \
     CellBroadcastReceiver \
@@ -108,5 +68,3 @@ PRODUCT_PACKAGE_OVERLAYS += \
 
 # by default, do not update the recovery with system updates
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.recovery_update=false
-
-$(call inherit-product-if-exists, vendor/extra/product.mk)
